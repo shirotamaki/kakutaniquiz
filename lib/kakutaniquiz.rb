@@ -9,11 +9,13 @@ module Kakutaniquiz
 
   def self.quiz
     prompt = TTY::Prompt.new
-    answer = prompt.select(Quiz.quizzes[0][:question], Quiz.quizzes[0][:choices])
-    if answer == Quiz.quizzes[0][:correct_answer]
-      puts Quiz.quizzes[0][:comment]
-    else
-      puts Quiz.quizzes[0][:false_comment]
+    Quiz.quizzes.each_index do |index|
+      answer = prompt.select(Quiz.quizzes[index][:question], Quiz.quizzes[index][:choices])
+      if answer == Quiz.quizzes[index][:correct_answer]
+        puts Quiz.quizzes[index][:comment]
+      else
+        puts Quiz.quizzes[index][:false_comment]
+      end
     end
   end
 end
