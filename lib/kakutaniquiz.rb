@@ -13,11 +13,15 @@ module Kakutaniquiz
     Quiz.quizzes.each_index do |index|
       answer = prompt.select(Quiz.quizzes[index][:question], Quiz.quizzes[index][:choices])
       if answer == Quiz.quizzes[index][:correct_answer]
+        puts "\n"
         puts Quiz.quizzes[index][:comment]
-        puts "------------------"
+        puts Quiz.quizzes[index][:url]
+        puts "---------------------------------------"
       else
+        puts "\n"
         puts Quiz.quizzes[index][:false_comment]
-        puts "------------------"
+        puts Quiz.quizzes[index][:url]
+        puts "---------------------------------------"
       end
       prompt.keypress("次のクイズに進むにはエンターを押してね")
       puts "\n"
